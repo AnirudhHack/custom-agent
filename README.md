@@ -39,7 +39,7 @@ const response = await lighthouse.uploadText(jsonData, apiKey, name);
 
 ### 2. Storacha
 
-The complete implementation of storach can be found in our repository at [utils/storach.ts](https://github.com/AnirudhHack/custom-agent/blob/master/utils/storach.ts)  and [components/chat/chat-interface.tsx](https://github.com/AnirudhHack/custom-agent/blob/master//components/chat/chat-interface.tsx#L141).
+The complete implementation of storach can be found in our repository at [utils/storach.ts](https://github.com/AnirudhHack/custom-agent/blob/master/utils/storach.ts)  and [components/chat/chat-interface.tsx](https://github.com/AnirudhHack/custom-agent/blob/master/components/chat/chat-interface.tsx#L141).
 
 Storacha is integrated into our platform to manage the storage of inputs, outputs, and additional context required for query resolution. So it upload those 3 things on storach.
 
