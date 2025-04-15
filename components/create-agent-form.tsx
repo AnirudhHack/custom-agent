@@ -38,7 +38,7 @@ export default function CreateAgentForm() {
     let hashList = [] 
 
     for (const fileData of fileUrls) {
-      if (fileData.file && fileData.storage === "Filecoin") {
+      if (fileData.file ) {
         let response = await uploadToFilecoinLighthouse(fileData.file)
         hashList.push(response.data.Hash)
       }
@@ -164,7 +164,8 @@ export default function CreateAgentForm() {
                         </SelectTrigger>
                         <SelectContent>
                           <SelectItem value="Filecoin">Filecoin</SelectItem>
-                          {/* <SelectItem value="Storj">Storj</SelectItem> */}
+                          <SelectItem value="Akave">Akave</SelectItem>
+                          <SelectItem value="CoopHive">CoopHive</SelectItem>
                         </SelectContent>
                       </Select>
 

@@ -12,6 +12,7 @@ import { getTextfromFilecoin } from "@/utils/filecoinUtils"
 import {getRelevantData} from "@/utils/similaritySearch"
 import {uploadFileToStoracha} from "@/utils/storach"
 import { gemini } from "@/utils/gemini"  // Import the gemini function
+import {lilypadAgent} from "@/utils/lilypad"
 
 function ensurePromptLength(prompt: string, maxLength: number): string {
   if (prompt.length > maxLength) {
@@ -106,8 +107,17 @@ export default function ChatInterface({ agentId, dataList }: { agentId: string, 
         If you use the relevant data to answer the question, include the source in this format on a new line at the end: ipfs source link: <link>  , but make sure there are **exactly two newlines** before the link.  
         If the relevant data is **not used**, do not include any source link. 
       `
-      
-      const agentReply = await gemini(finalPrompt) // Replace the simulation logic with this call
+
+      let agentReply =""
+      if(process.env.NEXT_PUBLIC_LILYPAD_API_KEY){
+        agentReply = await lilypadAgent("llama3.1:8b", finalPrompt);
+
+        if(!agentReply) {
+          
+          agentReply = await lilypadAgent("deepseek-r1:7b", finalPrompt);
+        }
+      }
+      else  agentReply = await gemini(finalPrompt) // Replace the simulation logic with this call
       
       setMessages((prev) => [
         ...prev,
@@ -128,9 +138,11 @@ export default function ChatInterface({ agentId, dataList }: { agentId: string, 
         "relevent_data_gained_rag": releventData
       }
       
+      // if(process.env.NEXT_PUBLIC_STORACHA_SPACE_DID){
 
-      // const agentStorachFile =  createJsonFileFromObject(dataToStoreOnStorach, `${agentId}.json`)
-      // await uploadFileToStoracha(agentStorachFile)
+      //   const agentStorachFile =  createJsonFileFromObject(dataToStoreOnStorach, `${agentId}.json`)
+      //   await uploadFileToStoracha(agentStorachFile)
+      // }
       
     } catch (error) {
       console.error("Error generating response:", error)
