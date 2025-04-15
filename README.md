@@ -57,7 +57,7 @@ Lilypad provides the AI models that power our agents, specifically DeepSeek and 
 
 - **Model Integration**: Our agents utilize the models provided by Lilypad to generate responses based on the datasets stored in Filecoin and Storacha. This ensures that every response is contextually relevant and backed by verifiable data.
 
-Integration can be found here:  [utils/coophive.ts](https://github.com/AnirudhHack/custom-agent/blob/master/utils/lilypad.ts) and [components/chat/chat-interface.tsx](https://github.com/AnirudhHack/custom-agent/blob/c93182cbcfd729f29d7d8d01f853e1978e0205c9/components/chat/chat-interface.tsx#L113). (make sure to add env variable  NEXT_PUBLIC_LILYPAD_API_KEY in .env file to enable lilypad agents).
+Integration can be found here:  [utils/coophive.ts](https://github.com/AnirudhHack/custom-agent/blob/master/utils/lilypad.ts) and [components/chat/chat-interface.tsx](https://github.com/AnirudhHack/custom-agent/blob/master/components/chat/chat-interface.tsx#L113). (make sure to add env variable  NEXT_PUBLIC_LILYPAD_API_KEY in .env file to enable lilypad agents).
 
 ### 4. Coophive
 

@@ -138,11 +138,11 @@ export default function ChatInterface({ agentId, dataList }: { agentId: string, 
         "relevent_data_gained_rag": releventData
       }
       
-      // if(process.env.NEXT_PUBLIC_STORACHA_SPACE_DID){
+      if(process.env.NEXT_PUBLIC_STORACHA_SPACE_DID){
 
-      //   const agentStorachFile =  createJsonFileFromObject(dataToStoreOnStorach, `${agentId}.json`)
-      //   await uploadFileToStoracha(agentStorachFile)
-      // }
+        const agentStorachFile =  createJsonFileFromObject(dataToStoreOnStorach, `${agentId}.json`)
+        await uploadFileToStoracha(agentStorachFile)
+      }
       
     } catch (error) {
       console.error("Error generating response:", error)
